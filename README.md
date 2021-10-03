@@ -17,7 +17,7 @@ import { Discord } from 'presence-kit';
 export default function MyComponent() {
   return (
     <>
-      <Discord id={'182292736790102017'}>
+      <Discord id={'182292736790102017'} />
     </>
   )
 }
