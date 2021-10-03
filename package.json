@@ -37,7 +37,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "rimraf dist && tsc",
-    "prepare": "yarn build"
+    "prepare": "npm run build"
   },
   "eslintConfig": {
     "extends": [
