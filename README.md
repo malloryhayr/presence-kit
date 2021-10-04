@@ -22,3 +22,4 @@ export default function MyComponent() {
   )
 }
 ```
+*The Discord component uses [Lanyard](https://github.com/Phineas/Lanyard) to function. Ensure you are in the Lanyard Discord server or your presence will not be able to be tracked.*
