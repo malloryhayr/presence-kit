@@ -1,11 +1,12 @@
 {
   "name": "presence-kit",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "LICENSE.md"
   ],
   "repository": {
     "type": "git",
