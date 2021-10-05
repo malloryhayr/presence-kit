@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, CSSProperties } from 'react';
 import { Activity, useLanyard } from 'use-lanyard';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -30,6 +30,7 @@ interface DiscordProps {
   border?: boolean;
   largeAssetOverrides?: DiscordAssetOverrides;
   blacklistedActivities?: string[];
+  style?: CSSProperties;
 }
 
 const DEFAULT_LARGE_ASSET_OVERRIDES = {
@@ -38,7 +39,7 @@ const DEFAULT_LARGE_ASSET_OVERRIDES = {
 
 const TRANSPARENT_IMAGE = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
 
-export default function Discord({id, bgStyle = DiscordBackgroundStyle.DARK, textStyle = DiscordTextStyle.LIGHT, border = true, largeAssetOverrides = DEFAULT_LARGE_ASSET_OVERRIDES, blacklistedActivities = []}: DiscordProps) {
+export default function Discord({id, bgStyle = DiscordBackgroundStyle.DARK, textStyle = DiscordTextStyle.LIGHT, border = true, largeAssetOverrides = DEFAULT_LARGE_ASSET_OVERRIDES, blacklistedActivities = [], style = {}}: DiscordProps) {
   const { data: activity } = useLanyard(id);
 
   largeAssetOverrides = { ...DEFAULT_LARGE_ASSET_OVERRIDES, ...largeAssetOverrides };
@@ -232,7 +233,7 @@ export default function Discord({id, bgStyle = DiscordBackgroundStyle.DARK, text
   if (activity) {
     return (
       <>
-        <DiscordContainer bg={bgStyle} text={textStyle} border={border}>
+        <DiscordContainer bg={bgStyle} text={textStyle} border={border} style={style}>
           <DiscordUserInfo />
           { activity.activities.map((x, index) => DiscordUserActivity(x, index)) }
         </DiscordContainer>
