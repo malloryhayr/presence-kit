@@ -397,8 +397,8 @@ const StatusCircle = styled.div<StatusStyleProps>`
   bottom: -2px;
   right: -2px;
   display: inline-block;
-  height: 15px;
-  width: 15px;
+  height: 20px;
+  width: 20px;
   border-radius: 50%;
   display: inline-block;
   background-color: ${props => {
