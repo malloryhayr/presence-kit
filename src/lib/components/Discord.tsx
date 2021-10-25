@@ -6,6 +6,7 @@ import { faMobileAlt } from '@fortawesome/free-solid-svg-icons';
 
 // @ts-ignore
 import Twemoji from 'react-twemoji';
+import ContentLoader from 'react-content-loader';
 
 import styled from 'styled-components';
 
@@ -230,6 +231,22 @@ export default function Discord({id, bgStyle = DiscordBackgroundStyle.DARK, text
     } else return <></>;
   }
 
+	function DiscordLoader(props: any) {
+		return (
+			<ContentLoader 
+				speed={2}
+				width={300}
+				height={110}
+				viewBox="0 0 525 175"
+				{...props}
+				style={{padding: 0, margin: 0}}
+			>
+				<circle cx="55" cy="55" r="55" /> 
+				<rect x="0" y="125" rx="3" ry="3" width="250" height="50" />
+			</ContentLoader>
+		)
+	}
+
   if (activity) {
     return (
       <>
@@ -240,7 +257,23 @@ export default function Discord({id, bgStyle = DiscordBackgroundStyle.DARK, text
       </>
     )
   } else {
-    return <></>
+    return (
+			<>
+				<DiscordContainer bg={bgStyle} text={textStyle} border={border} style={style}>
+					{textStyle === DiscordTextStyle.LIGHT ? (
+						<DiscordLoader
+							backgroundColor="#2b2b2b"
+							foregroundColor="#424242"
+						/>
+					) : (
+						<DiscordLoader
+							backgroundColor="#c9c9c9"
+							foregroundColor="#ffffff"
+						/>
+					)}
+        </DiscordContainer>
+			</>
+		)
   }
 }
 
