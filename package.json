@@ -1,6 +1,6 @@
 {
   "name": "presence-kit",
-  "version": "0.2.10",
+  "version": "0.2.11",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
@@ -33,12 +33,11 @@
     "react-content-loader": "^6.0.3",
     "react-dom": "^17.0.2",
     "react-scripts": "^4.0.3",
-    "rimraf": "^3.0.2",
-    "tsup": "^5.5.0"
+    "rimraf": "^3.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "rimraf dist && npx tsup src/lib --dts",
+    "build": "rimraf dist && tsc",
     "prepare": "npm run build"
   },
   "eslintConfig": {
