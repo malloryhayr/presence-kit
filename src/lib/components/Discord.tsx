@@ -158,6 +158,7 @@ export default function Discord({id, bgStyle = DiscordBackgroundStyle.DARK, text
                     alt={ activityData.assets && activityData.assets.small_text !== undefined ? activityData.assets.small_text : '' }
                     width={20}
                     height={20}
+                    bg={bgStyle}
                   />
                 </ImageContainer>
                 <InfoContainer>
@@ -317,13 +318,14 @@ const PrimaryImage = styled.img`
   border-radius: 5px;
 `;
 
-const SecondaryImage = styled.img`
+const SecondaryImage = styled.img<StatusStyleProps>`
   width: 20px;
   height: 20px;
   position: absolute;
   bottom: -5px;
   right: -5px;
   border-radius: 50%;
+  border: 3px solid ${props => props.bg};
 `;
 
 const AvatarImage = styled.img`
