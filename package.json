@@ -1,60 +1,60 @@
 {
-  "name": "presence-kit",
-  "version": "0.2.13",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "files": [
-    "dist",
-    "README.md",
-    "LICENSE.md"
-  ],
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/iGalaxyYT/presence-kit.git"
-  },
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.36",
-    "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@fortawesome/react-fontawesome": "^0.1.15",
-    "react-content-loader": "^6.0.3",
-    "react-twemoji": "^0.3.0",
-    "styled-components": "^5.3.1",
-    "swr": "^1.0.1",
-    "typescript": "^4.4.4",
-    "use-lanyard": "^1.0.1"
-  },
-  "devDependencies": {
-    "@types/node": "^12.0.0",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "@types/styled-components": "^5.1.14",
-    "cross-env": "^7.0.3",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "^4.0.3",
-    "rimraf": "^3.0.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "rimraf dist && tsc",
-    "prepare": "npm run build"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+	"name": "presence-kit",
+	"version": "0.2.13",
+	"main": "dist/index.js",
+	"module": "dist/index.js",
+	"files": [
+		"dist",
+		"README.md",
+		"LICENSE.md"
+	],
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/iGalaxyYT/presence-kit.git"
+	},
+	"dependencies": {
+		"@fortawesome/fontawesome-svg-core": "^1.2.36",
+		"@fortawesome/free-solid-svg-icons": "^5.15.4",
+		"@fortawesome/react-fontawesome": "^0.1.15",
+		"react-content-loader": "^6.0.3",
+		"react-twemoji": "^0.3.0",
+		"styled-components": "^5.3.1",
+		"swr": "^1.0.1",
+		"typescript": "^4.4.4",
+		"use-lanyard": "^1.0.1"
+	},
+	"devDependencies": {
+		"@types/node": "^12.0.0",
+		"@types/react": "^17.0.0",
+		"@types/react-dom": "^17.0.0",
+		"@types/styled-components": "^5.1.14",
+		"cross-env": "^7.0.3",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2",
+		"react-scripts": "^4.0.3",
+		"rimraf": "^3.0.2"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "rimraf dist && tsc",
+		"prepare": "npm run build"
+	},
+	"eslintConfig": {
+		"extends": [
+			"react-app"
+		]
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	}
 }

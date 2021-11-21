@@ -6,8 +6,8 @@ function App() {
 		<>
 			<Discord
 				id={'182292736790102017'}
-				bgStyle={DiscordBackgroundStyle.LIGHT}
-				textStyle={DiscordTextStyle.DARK}
+				bgStyle={DiscordBackgroundStyle.DARK}
+				textStyle={DiscordTextStyle.LIGHT}
 			/>
 		</>
 	);

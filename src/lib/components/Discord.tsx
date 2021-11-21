@@ -214,6 +214,28 @@ export default function Discord({
 		return <></>;
 	}
 
+	function SecondaryImageMiddleman(props: {
+		id: number | undefined;
+		small_image: string | undefined;
+		small_text: string | undefined;
+	}) {
+		return props.small_image !== undefined ? (
+			<SecondaryImage
+				src={
+					props.small_image !== undefined
+						? getDiscordAssetURL(props.id, props.small_image)
+						: TRANSPARENT_IMAGE
+				}
+				alt={props.small_text !== undefined ? props.small_text : ''}
+				width={20}
+				height={20}
+				bg={bgStyle}
+			/>
+		) : (
+			<></>
+		);
+	}
+
 	function DiscordUserActivity(activityData: Activity, index: number) {
 		if (activity) {
 			switch (activityData.type) {
@@ -227,14 +249,14 @@ export default function Discord({
 								<ImageContainer>
 									<PrimaryImage
 										src={
-											activityData.assets && activityData.assets.large_image !== undefined
+											getLargeAssetOverride(activityData.name)
+												? getLargeAssetOverride(activityData.name)
+												: activityData.assets && activityData.assets.large_image !== undefined
 												? getDiscordAssetURL(
 														activityData.application_id,
 														activityData.assets.large_image
 												  )
-												: getLargeAssetOverride(activityData.name)
-												? getLargeAssetOverride(activityData.name)
-												: TRANSPARENT_IMAGE
+												: `https://dcdn.dstn.to/app-icons/${activityData.application_id}`
 										}
 										alt={
 											activityData.assets && activityData.assets.large_text !== undefined
@@ -244,23 +266,10 @@ export default function Discord({
 										width={60}
 										height={60}
 									/>
-									<SecondaryImage
-										src={
-											activityData.assets && activityData.assets.small_image !== undefined
-												? getDiscordAssetURL(
-														activityData.application_id,
-														activityData.assets.small_image
-												  )
-												: TRANSPARENT_IMAGE
-										}
-										alt={
-											activityData.assets && activityData.assets.small_text !== undefined
-												? activityData.assets.small_text
-												: ''
-										}
-										width={20}
-										height={20}
-										bg={bgStyle}
+									<SecondaryImageMiddleman
+										id={activityData.application_id}
+										small_image={activityData.assets?.small_image}
+										small_text={activityData.assets?.small_text}
 									/>
 								</ImageContainer>
 								<InfoContainer>

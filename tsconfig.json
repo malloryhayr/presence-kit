@@ -2,7 +2,7 @@
   "compilerOptions": {
     "outDir": "./dist",
     "target": "es5",
-    "module": "commonjs",
+    "module": "esnext",
     "lib": [
       "DOM",
       "DOM.Iterable",
@@ -14,11 +14,21 @@
     "removeComments": true,
     "declaration": true,
     "sourceMap": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "typeRoots": [
       "index.d.ts",
       "node_modules/@types"
-    ]
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
   },
   "include": [
     "./src/lib/**/*.tsx",
