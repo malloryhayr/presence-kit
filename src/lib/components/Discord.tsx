@@ -112,7 +112,9 @@ export default function Discord({
 	}
 
 	function getDiscordAssetURL(application: number | undefined, asset: string | undefined) {
-		return `https://cdn.discordapp.com/app-assets/${application}/${asset}.png`;
+		return asset?.startsWith('mp:external')
+			? asset.replace(/mp:external\/([^\/]*)\/(http[s])/g, '$2:/')
+			: `https://cdn.discordapp.com/app-assets/${application}/${asset}.png`;
 	}
 
 	function getLargeAssetOverride(name: string) {
