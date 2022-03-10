@@ -1,20 +1,20 @@
-# presence-kit
+# @igalaxy/presence-kit
 
 A kit of React components for displaying user presence on various platforms
 
 To get started:
 
 ```
-npm install presence-kit
+npm install @igalaxy/presence-kit
 OR
-yarn add presence-kit
+yarn add @igalaxy/presence-kit
 ```
 
-`presence-kit` currently only has one component, `Discord`.
+`@igalaxy/presence-kit` currently only has one component, `Discord`.
 To use:
 
 ```ts
-import { Discord } from 'presence-kit';
+import { Discord } from '@igalaxy/presence-kit';
 
 export default function MyComponent() {
 	return (
