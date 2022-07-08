@@ -315,7 +315,15 @@ export default function Discord({
 												<p>by {activity.spotify.artist.replaceAll(';', ',')}</p>
 											)}
 										</Info>
-										<Info>{activity.spotify.album && <p>on {activity.spotify.album}</p>}</Info>
+										<Info>
+											{
+												// @ts-ignore
+												activity.spotify.album.large_text && (
+													// @ts-ignore
+													<p>on {activity.spotify.album.large_text}</p>
+												)
+											}
+										</Info>
 										<Info></Info>
 									</InfoContainer>
 								</Row>
