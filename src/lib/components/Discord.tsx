@@ -51,7 +51,7 @@ export default function Discord({
 	blacklistedActivities = [],
 	style = {},
 }: DiscordProps) {
-	const { data: activity } = useLanyard(id);
+	const { data: activity } = useLanyard(`${BigInt(id)}`);
 
 	largeAssetOverrides = { ...DEFAULT_LARGE_ASSET_OVERRIDES, ...largeAssetOverrides };
 
@@ -191,6 +191,15 @@ export default function Discord({
 								width={60}
 								height={60}
 							/>
+							{(activity.discord_user as any).avatar_decoration ? (
+								<AvatarDecoration
+									decoration={`https://cdn.discordapp.com/avatar-decorations/${
+										activity.discord_user.id
+									}/${(activity.discord_user as any).avatar_decoration}.png`}
+								/>
+							) : (
+								<></>
+							)}
 							<DiscordUserInfoStatus />
 						</ImageContainer>
 					</Row>
@@ -255,7 +264,7 @@ export default function Discord({
 												? getLargeAssetOverride(activityData.name)
 												: activityData.assets && activityData.assets.large_image !== undefined
 												? getDiscordAssetURL(
-														activityData.application_id,
+														Number(activityData.application_id),
 														activityData.assets.large_image
 												  )
 												: `https://dcdn.dstn.to/app-icons/${activityData.application_id}`
@@ -269,7 +278,7 @@ export default function Discord({
 										height={60}
 									/>
 									<SecondaryImageMiddleman
-										id={activityData.application_id}
+										id={Number(activityData.application_id)}
 										small_image={activityData.assets?.small_image}
 										small_text={activityData.assets?.small_text}
 									/>
@@ -439,6 +448,10 @@ interface StatusStyleProps {
 	border?: boolean;
 }
 
+interface AvatarDecorationProps {
+	decoration: string;
+}
+
 const DiscordContainer = styled.div<StatusStyleProps>`
 	@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
 	font-family: 'Inter', sans-serif;
@@ -581,6 +594,17 @@ const ProgressForeground = styled.div<StatusStyleProps>`
 const TimestampContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
+`;
+
+const AvatarDecoration = styled.div<AvatarDecorationProps>`
+	position: absolute;
+	height: 72px;
+	width: 72px;
+	top: -6px;
+	left: -6px;
+	display: inline-block;
+	background-image: url('${props => props.decoration}');
+	background-size: 72px;
 `;
 
 const StatusCircle = styled.div<StatusStyleProps>`
