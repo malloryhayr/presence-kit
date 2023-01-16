@@ -111,7 +111,7 @@ export default function Discord({
 		).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })} elapsed`;
 	}
 
-	function getDiscordAssetURL(application: number | undefined, asset: string | undefined) {
+	function getDiscordAssetURL(application: string | undefined, asset: string | undefined) {
 		return asset?.startsWith('mp:external')
 			? asset.replace(/mp:external\/([^\/]*)\/(http[s])/g, '$2:/')
 			: `https://cdn.discordapp.com/app-assets/${application}/${asset}.png`;
@@ -226,7 +226,7 @@ export default function Discord({
 	}
 
 	function SecondaryImageMiddleman(props: {
-		id: number | undefined;
+		id: string | undefined;
 		small_image: string | undefined;
 		small_text: string | undefined;
 	}) {
@@ -264,7 +264,7 @@ export default function Discord({
 												? getLargeAssetOverride(activityData.name)
 												: activityData.assets && activityData.assets.large_image !== undefined
 												? getDiscordAssetURL(
-														Number(activityData.application_id),
+														activityData.application_id,
 														activityData.assets.large_image
 												  )
 												: `https://dcdn.dstn.to/app-icons/${activityData.application_id}`
@@ -278,7 +278,7 @@ export default function Discord({
 										height={60}
 									/>
 									<SecondaryImageMiddleman
-										id={Number(activityData.application_id)}
+										id={activityData.application_id}
 										small_image={activityData.assets?.small_image}
 										small_text={activityData.assets?.small_text}
 									/>
@@ -422,7 +422,7 @@ export default function Discord({
 			<>
 				<DiscordContainer bg={bgStyle} text={textStyle} border={border} style={style}>
 					<DiscordUserInfo />
-					{activity.activities.map((x, index) => DiscordUserActivity(x, index))}
+					{activity.activities.map((x: any, index: any) => DiscordUserActivity(x, index))}
 				</DiscordContainer>
 			</>
 		);
