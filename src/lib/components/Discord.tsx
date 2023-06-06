@@ -32,6 +32,7 @@ interface DiscordProps {
 	largeAssetOverrides?: DiscordAssetOverrides;
 	blacklistedActivities?: string[];
 	style?: CSSProperties;
+	username?: boolean;
 }
 
 const DEFAULT_LARGE_ASSET_OVERRIDES = {
@@ -50,6 +51,7 @@ export default function Discord({
 	largeAssetOverrides = DEFAULT_LARGE_ASSET_OVERRIDES,
 	blacklistedActivities = [],
 	style = {},
+	username = true,
 }: DiscordProps) {
 	const { data: activity } = useLanyard(`${BigInt(id)}`);
 
@@ -203,22 +205,30 @@ export default function Discord({
 							<DiscordUserInfoStatus />
 						</ImageContainer>
 					</Row>
-					<Row style={activity.activities.length > 0 ? { paddingBottom: '16px' } : {}}>
+					<Row
+						style={
+							username
+								? { marginBottom: '4px' }
+								: activity.activities.length > 0
+								? { paddingBottom: '16px' }
+								: {}
+						}
+					>
 						<Info style={{ padding: 0, margin: 0 }}>
-							<h3>
-								{activity.discord_user.username}
-								<span
-									style={
-										textStyle === DiscordTextStyle.LIGHT
-											? { color: '#b9bbbe' }
-											: { color: '#4f5660' }
-									}
-								>
-									#{activity.discord_user.discriminator}
-								</span>
-							</h3>
+							{/*
+							// @ts-ignore */}
+							<h3>{activity.discord_user.global_name}</h3>
 						</Info>
 					</Row>
+					{username ? (
+						<Row style={activity.activities.length > 0 ? { paddingBottom: '16px' } : {}}>
+							<Info style={{ padding: 0, margin: 0 }}>
+								<h3 style={{ fontSize: '14px' }}>{activity.discord_user.username}</h3>
+							</Info>
+						</Row>
+					) : (
+						<></>
+					)}
 				</>
 			);
 		}
